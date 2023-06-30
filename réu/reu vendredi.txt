@@ -1,0 +1,17 @@
+plus la similarité est grande, plus le poids est grand
+pb : on fait une pondération avec l'ensemble des mots du lexique
+-> pour chaque mot, prendre la similarité max ou min, ce qui permet d'obtenir un score de respect
+0.30 trop peu
+0.65< bien !
+segmentation : utiliser les time stamps pour prendre le debut et la fin de chaque segment
+
+eaf = pympi.Elan.Eaf(file)
+annots = sorted(eaf.get_annotation_data_for_tier('Trust'))
+
+rire binaire
+repetition binaire
+mot representé par un vecteur
+
+keyed vectors
+
+n-gram pour la repetition --> 3-gram max

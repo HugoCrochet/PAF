@@ -1,0 +1,76 @@
+0) Extraction de features
+1) Aggrégation
+2) ML
+
+1) Aggrégation 
+pour chaque segment allant de t0 à t1 on recupere des données de différentes natures.
+-> faire une representation vectorielle au sein de ce segment
+différents types de données:
+catégoriques (indicateur binaire) : vecteur contenant des 0 ou des 1
+continues : on renvoie generalement la valeur min, max, moyenne, ecart standard
+
+on aura donc un vecteur pour chaque segment (sortie)
+on associe un label a ce vecteur
+3 labels : confiance, neutre, méfiance
+
+Y = (Confiance, Neutre, Méfiance) = (1,0,0) si confiance sur un segment
+
+-----------------------------------------------------------------------------------
+
+2) ML
+-Régression linéaire / logistique (simple mais approximatif car on considère qu'il existe une relation linéaire entre l'entrée et la sortie) -> Y=AX+b (b : biais, A : poids) -> A permet de connaitre quels features sont plus importantes que les autres
+-SVM / SVM-C : trouver l'hyperplan dont les marges sont les plus grandes pour les points les plus proches (trouver la séparation la plus claire possible pour séparer les classes)
+-Arbres de décision (possible problème : overfit (quand trop peu de données) -> l'algo n'arrive pas à généraliser à partir des données d'entrainement)
+-Forêts aléatoires : Basées sur les arbres de décisions, on en fait plein pour faire une forêt et on en choisit un à la fin (mais chaque arbre ne s'entraine pas sur les mêmes données : bagging) -> un des algos qui marche le mieux lorsque l'on connait pas trop ses données (premier algo à tester en ML généralement)
+-MLP (réseau de neurones)
+
+Métriques (évaluer notre modèle) :
+-Accuracy (nombre de labels dévinés correctement, sur le nombre total de labels à deviner)
+-Recall (nombre de labels dévinés correctement, sur le nombre total de labels appartenant à cette classe)
+-Score F1 : sorte de moyenne harmonique entre accuracy et recall (plus le score est bas plus on commet des erreurs)
+-(ROC-AUC)
+
+PROBLEME : notre sortie n'est pas binaire
+donc on peut faire accuracy par classe (mefiance contre le reste, neutre contre le reste, trust contre le reste) et en faire la moyenne
+
+FONCTIONNEMENT : a chaque étape on va construire un set d'entrainement et un set de test
+on peut par exemple prendre 9 des 10 dossiers en guise de données d'apprentissage et prendre le 10eme comme set de test
+-> faire une boucle pour tester chaque dossier comme set de test
+
+HYPERPARAMETRES : sur le set d'apprentissage, faire un préapprentissage
+cross validation : determiner les hyperparametres optimaux sur un set d'apprentissage
+on les utilise pour entrainer le set complet d'apprentissage
+et apres on evalue sur le set de test grace aux metriques
+set d'apprentissage = 9 parmis 10
+set de validation = 2 parmis 9 (ou eventuellement 1)
+searchgridcv
+
+segment = 3s mefiance, trust 3.5-5s, neutre 12s
+
+MULTIMODALITÉ : 
+-early fusion : rassembler tous nos vecteurs en un seul (concaténation)
+-late fusion : partir du principe qu'une modalité est plus importante que les autres dans la détermination du label. Pour chacune des modalités on lui donne un modèle de ML (le même). Puis on fait un vote majoritaire.
+
+MARCHE A SUIVRE : early fusion, tester les 4 modeles écrits ci-dessus (RL, SVM, RF, DT), calcul des metriques. Late fusion si on a le temps, appliqué avec random forest
+
+/!\ attention a ce que la taille de notre vecteur ne soit pas supérieure au nombre de données !
+si n segments, et vecteur de taille p pour chaque segment, il faut absolument pas que n<<p
+
+PCA pour l'analyse sémantique : utiliser scikitlearn (cumulative explainative variance)
+virer stop words : nltk
+vecteur taille 2 : nombre marques de respect et non respect
+vecteur taille 4 = vecteur taille 2 ci dessus + repetition (binaire) + rire (binaire)
+
+semantique : (4,2,0,1) par exemple
+
+feature importances
+
+
+
+
+
+
+
+
+
+

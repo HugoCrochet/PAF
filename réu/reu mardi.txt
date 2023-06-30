@@ -1,0 +1,28 @@
+Sémantique :
+
+pas de retranscriptions auto
+mais fichier audio -> a nous de le faire
+puis analyse semantique -> bcp de temps
+pas bcp d'interactions orales de la part des humains dans les videos
+ils posent essentiellement des qsts au robot
+
+voir les discussions entre humains !!
+
+9 et 12 (habillés en vert) -> pas mal de brisage de glace + respect
+
+word2vec : construire une representation vectorielle des mots en fonction du contexte dans la phrase 
+
+similarité cosinus : comparer des mots présents dans un dico
+
+27 : interaction ou les humains s'en fichent de l'interaction (irrespecteux)
+
+regarder aussi la sémantique du robot, pertinent d'utiliser ce que le robot dit?
+
+regarder person.csv pour la spacialisation
+
+détail des features a extraire + forme de la feature (binaire, vecteur, etc, ...) + calcul de la feature
+
+9h30 lundi 
+
+
+

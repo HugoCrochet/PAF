@@ -1,0 +1,16 @@
+rires :
+deja des annotations dans le dataset (variable assignée a un participant : soit la personne est silencieuse, en train de parler, ou de rire).
+
+interactions intermodales : 
+pas très grave d'avoir juste la sémantique d'un côté (séparée de la prosodie)
+on verra cela au niveau des modeles, en croisant les modalités
+
+on gèrera les répétitions
+les rires on peut aussi s'en occuper mais pas obligatoire
+
+partie agregation : 
+on s'interesse a un certain segment, de longueur variable.
+peut etre considere des phrases (mais plus dur que l'agregation de mots seulement)
+possible d'agreger les phrases au sein d'un segment, avec une moyenne et a côté de ça et utiliser un indicateur binaire sur la présence ou non de marque de respect.
+
+une discussion inter participants indique un manque de confiance
